@@ -1,4 +1,23 @@
 <mat-card>
-<p>test matcard</p>
+  <p>test matcard</p>
 
+  <mat-accordion>
+    <mat-expansion-panel *ngFor='let task of tasks'>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{task.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+
+          Priorirty: {{task.priority}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-panel-description>
+        Description
+      </mat-panel-description>
+      {{task.description}}
+
+    </mat-expansion-panel>
+  </mat-accordion>
 </mat-card>

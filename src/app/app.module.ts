@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskListComponent } from './task-list/task-list.component';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatExpansionModule, MatIconModule, MatToolbarModule } from '@angular/material';
 
 
 @NgModule({
@@ -17,7 +17,10 @@ import { MatCardModule } from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
