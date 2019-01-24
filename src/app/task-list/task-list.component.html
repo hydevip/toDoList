@@ -1,23 +1,24 @@
-<mat-card>
-  <p style="text-align: center;">To Do Tasks</p>
 
-  <mat-accordion>
-    <mat-expansion-panel *ngFor='let task of tasks'>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{task.title}}
-        </mat-panel-title>
+  <mat-card>
+    <p style="text-align: center;">To Do Tasks</p>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor='let task of tasks'>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{task.title}}
+          </mat-panel-title>
+          <mat-panel-description>
+
+            Priorirty: {{task.priority}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
         <mat-panel-description>
-
-          Priorirty: {{task.priority}}
+          Description
         </mat-panel-description>
-      </mat-expansion-panel-header>
+        {{task.description}}
 
-      <mat-panel-description>
-        Description
-      </mat-panel-description>
-      {{task.description}}
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
 
-    </mat-expansion-panel>
-  </mat-accordion>
-</mat-card>

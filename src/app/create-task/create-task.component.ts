@@ -18,6 +18,7 @@ enteredTitle: string;
   }
 onAddTask(form: NgForm) {
   console.log(form.value.title);
+  form.reset();
   return console.log('task added');
 }
 }

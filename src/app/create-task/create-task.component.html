@@ -1,14 +1,36 @@
-<div class="form">
-  <mat-card>
-    <form (submit)="onAddTask(taskFrom)" #taskFrom="ngForm">
-      <mat-form-field>
-        <input  matInput type="text" maxlength="60" minlength="4" ngModel name="title" placeholder="Title:" required>
-      </mat-form-field>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Add Task
+    </mat-panel-title>
+    <mat-panel-description>
+      Click here to add a new task
+    </mat-panel-description>
+  </mat-expansion-panel-header>
 
-      <mat-form-field>
-        <textarea matInput rows="5" name="description" ngModel placeholder="Description:" required></textarea>
-      </mat-form-field>
+  <form (submit)="onAddTask(taskFrom)" #taskFrom="ngForm">
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" maxlength="60" minlength="4" ngModel name="title" placeholder="Title:" required>
+        </mat-form-field>
+
+      <mat-radio-group>
+          <mat-radio-button color="primary" value="1">High</mat-radio-button>
+          <mat-radio-button color="primary" value="2">Medium</mat-radio-button>
+          <mat-radio-button color="primary" value="3">Low</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput rows="5" name="description" ngModel placeholder="Description:" required></textarea>
+        </mat-form-field>
+      </div>
+      <br>
       <button mat-raised-button color="primary" type="submit">Add task</button>
     </form>
-  </mat-card>
-  </div>
+
+</mat-expansion-panel>
+
+
+
+
