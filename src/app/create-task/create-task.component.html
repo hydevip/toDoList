@@ -1,3 +1,14 @@
-<mat-card>
-  <p>create task</p>
-</mat-card>
+<div class="form">
+  <mat-card>
+    <form (submit)="onAddTask(taskFrom)" #taskFrom="ngForm">
+      <mat-form-field>
+        <input  matInput type="text" maxlength="60" minlength="4" ngModel name="title" placeholder="Title:" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput rows="5" name="description" ngModel placeholder="Description:" required></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Add task</button>
+    </form>
+  </mat-card>
+  </div>
