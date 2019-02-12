@@ -57,24 +57,17 @@ app.post("/api/todolist", function(req, res) {
   var newToDo = req.body;
   newToDo.createDate = new Date();
 
-  // if (!req.body.title) {
-  //   handleError(res, "Invalid user input", "Must provide a title.", 400);
-  // } else {
-  //   db.collection(TODOLIST_COLLECTION).insertOne(newToDo, function(err, doc) {
-  //     if (err) {
-  //       handleError(res, err.message, "Failed to create new to do task.");
-  //     } else {
-  //       res.status(201).json(doc.ops[0]);
-  //     }
-  //   });
-  // }
+  if (!req.body.title) {
+    handleError(res, "Invalid user input", "Must provide a title.", 400);
+  } else {
+    db.collection(TODOLIST_COLLECTION).insertOne(newToDo, function(err, doc) {
+      if (err) {
+        handleError(res, err.message, "Failed to create new to do task.");
+      } else {
+        res.status(201).json(doc.ops[0]);
+      }
+    });
+  }
 
-  db.collection(TODOLIST_COLLECTION).insertOne(newToDo, function(err, doc) {
-    if (err) {
-      handleError(res, err.message, "Failed to create new to do task.");
-    } else {
-      res.status(201).json(doc.ops[0]);
-    }
-  });
 
 });
