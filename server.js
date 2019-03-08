@@ -3,11 +3,10 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
-var TODOLIST_COLLECTION = "todolist";
+var CONTACTS_COLLECTION = "contacts";
 
 var app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded( ));
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
@@ -37,38 +36,34 @@ function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
 }
-
 /*  "/api/contacts"
  *    GET: finds all contacts
  *    POST: creates a new contact
  */
 
-app.get("/api/todolist", function(req, res) {
-  db.collection(TODOLIST_COLLECTION).find({}).toArray(function(err, docs) {
+app.get("/api/contacts", function(req, res) {
+  db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
-      handleError(res, err.message, "Failed to get the to do list.");
+      handleError(res, err.message, "Failed to get contacts.");
     } else {
       res.status(200).json(docs);
     }
   });
 });
 
-app.post("/api/todolist", function(req, res) {
-  var newToDo = req.body;
+app.post("/api/contacts", function(req, res) {
+  var newContact = req.body;
+  newContact.createDate = new Date();
 
-
-  if (!req.body.title) {
-    handleError(res, "Invalid user input", req.body, 400);
-//    handleError(res, "Invalid user input", "Must provide a title.", 400);
+  if (!req.body.name) {
+    handleError(res, "Invalid user input", "Must provide a name.", 400);
   } else {
-    db.collection(TODOLIST_COLLECTION).insertOne(newToDo, function(err, doc) {
+    db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
       if (err) {
-        handleError(res, err.message, "Failed to create new to do task.");
+        handleError(res, err.message, "Failed to create new contact.");
       } else {
         res.status(201).json(doc.ops[0]);
       }
     });
   }
-
-
 });
