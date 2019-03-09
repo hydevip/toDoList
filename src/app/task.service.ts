@@ -6,7 +6,12 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Task } from './interfaces';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +23,24 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.tasksUrl);
+    return this.http
+      .get<Task[]>(this.tasksUrl)
+      .pipe(catchError(this.handleError('getTask', [])));
+  }
+
+  addTask(task: Task): Observable<Task> {
+    return this.http
+      .post<Task>(this.tasksUrl, task, httpOptions)
+      .pipe(catchError(this.handleError<Task>('postTask')));
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
 }

@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.css']
 })
+
+
 export class CreateTaskComponent implements OnInit {
+  test: string;
+  enteredTitle: string;
 
-test: string;
-enteredTitle: string;
+  constructor(private taskService: TaskService) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit() {}
+  onAddTask(form: NgForm) {
+    console.log(form.value.title);
+    form.reset();
+    return console.log('task added');
   }
-onAddTask(form: NgForm) {
-  console.log(form.value.title);
-  form.reset();
-  return console.log('task added');
-}
 }

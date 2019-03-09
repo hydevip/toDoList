@@ -8,23 +8,23 @@ import { TaskService } from '../task.service';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
+  task: Task;
+  tasks: Task[];
 
-  task: Task ;
-  tasks: Task[] ;
-
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService) {}
 
   ngOnInit() {
     this.getTasks();
-   }
+  }
 
-getTasks() {
+  getTasks() {
+    return this.taskService
+      .getTasks()
+      .subscribe((data: Task[]) => (this.tasks = data));
+  }
 
- return this.taskService.getTasks().subscribe((data: Task[]) => this.tasks = data);
-
+addTask(task: Task) {
+  return this.taskService.addTask(task);
 }
 
-
 }
-
-
