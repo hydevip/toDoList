@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TaskService } from '../task.service';
+import { Task } from '../interfaces';
 
 @Component({
   selector: 'app-create-task',
@@ -16,9 +17,18 @@ export class CreateTaskComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {}
+
   onAddTask(form: NgForm) {
     console.log(form.value.title);
     form.reset();
+    this.addTask(form.value);
     return console.log('task added');
   }
+
+
+  addTask(task: Task) {
+    return this.taskService.addTask(task);
+  }
+
+
 }
