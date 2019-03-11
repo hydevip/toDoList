@@ -8,8 +8,6 @@ import { Task } from '../interfaces';
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.css']
 })
-
-
 export class CreateTaskComponent implements OnInit {
   test: string;
   enteredTitle: string;
@@ -19,16 +17,14 @@ export class CreateTaskComponent implements OnInit {
   ngOnInit() {}
 
   onAddTask(form: NgForm) {
-    console.log(form.value.title);
-    form.reset();
+    console.log(form.value);
+
     this.addTask(form.value);
+    form.reset();
     return console.log('task added');
   }
-
 
   addTask(task: Task) {
     return this.taskService.addTask(task);
   }
-
-
 }
