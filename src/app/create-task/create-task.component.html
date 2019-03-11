@@ -15,10 +15,10 @@
           <input matInput type="text" maxlength="60" minlength="4" ngModel name="title" placeholder="Title:" required>
         </mat-form-field>
 
-      <mat-radio-group>
-          <mat-radio-button color="primary" value="1">High</mat-radio-button>
-          <mat-radio-button color="primary" value="2">Medium</mat-radio-button>
-          <mat-radio-button color="primary" value="3">Low</mat-radio-button>
+      <mat-radio-group ngModel name="priority">
+          <mat-radio-button color="primary" value="High">High</mat-radio-button>
+          <mat-radio-button color="primary" value="Medium">Medium</mat-radio-button>
+          <mat-radio-button color="primary" value="Low">Low</mat-radio-button>
         </mat-radio-group>
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
