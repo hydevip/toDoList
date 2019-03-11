@@ -25,6 +25,6 @@ export class CreateTaskComponent implements OnInit {
   }
 
   addTask(task: Task) {
-    return this.taskService.addTask(task);
+    return this.taskService.addTask(task).subscribe(() => console.log(task));
   }
 }
