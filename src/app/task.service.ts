@@ -21,26 +21,23 @@ export class TaskService {
   tasksUrl = '/api/tasks';
   private subjectGetTasks = new BehaviorSubject<any>(
     this.http
-    .get<Task[]>(this.tasksUrl)
-    .pipe(catchError(this.handleError('getTask', []))));
+      .get<Task[]>(this.tasksUrl)
+      .pipe(catchError(this.handleError('getTask', [])))
+  );
 
   constructor(private http: HttpClient) {}
 
   sendTasksList() {
-    this.subjectGetTasks.next(() => {
+    this.subjectGetTasks.next(
       this.http
-      .get<Task[]>(this.tasksUrl)
-      .pipe(catchError(this.handleError('getTask', []))); }
-
+        .get<Task[]>(this.tasksUrl)
+        .pipe(catchError(this.handleError('getTask', [])))
     );
-
   }
 
-  getTasksList(): Observable<Task[]> {
+  getTasksList(): Observable<any> {
     return this.subjectGetTasks.asObservable();
   }
-
-
 
   // getTasks(): Observable<Task[]> {
   //   return this.http
@@ -53,7 +50,7 @@ export class TaskService {
 
     return this.http
       .post<Task>(this.tasksUrl, task, httpOptions)
-      .pipe(catchError(this.handleError<Task>('postTask')), );
+      .pipe(catchError(this.handleError<Task>('postTask')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
