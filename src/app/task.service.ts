@@ -47,10 +47,10 @@ export class TaskService {
 
   addTask(task: Task): Observable<Task> {
     console.log(task);
-    this.subjectGetTasks.next();
+
     return this.http
       .post<Task>(this.tasksUrl, task, httpOptions)
-      .pipe(catchError(this.handleError<Task>('postTask')));
+      .pipe(catchError(this.handleError<Task>('postTask')), );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
