@@ -18,7 +18,7 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.subscription = this.taskService.getTasksList().subscribe((data) => (this.tasks = data));
+    console.log(this.subscription = this.taskService.getTasksList().subscribe((data) => (this.tasks = data)));
   }
 
 
