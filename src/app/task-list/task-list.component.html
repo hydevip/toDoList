@@ -3,7 +3,7 @@
     <p style="text-align: center;">To Do Tasks</p>
     <mat-accordion>
       <div *ngIf="!tasks.length">
-      <mat-expansion-panel *ngFor='let task of tasks'>
+      <mat-expansion-panel *ngFor='let task of tasks | async'>
         <mat-expansion-panel-header>
           <mat-panel-title>
             {{task.title}}
