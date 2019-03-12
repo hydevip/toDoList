@@ -19,7 +19,7 @@ export class TaskListComponent implements OnInit {
 
   getTasks() {
     return this.taskService
-      .getTasks()
+      .updateTasksList()
       .subscribe((data: Task[]) => (this.tasks = data));
   }
 

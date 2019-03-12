@@ -6,7 +6,7 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Task } from './interfaces';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 const httpOptions = {
@@ -19,17 +19,33 @@ const httpOptions = {
 export class TaskService {
   api_url = 'http://localhost:8080';
   tasksUrl = '/api/tasks';
+  private subjectGetTasks = new Subject<any>();
 
   constructor(private http: HttpClient) {}
 
-  getTasks(): Observable<Task[]> {
-    return this.http
+  getTasksList() {
+    this.subjectGetTasks.next(() => {
+      this.http
       .get<Task[]>(this.tasksUrl)
-      .pipe(catchError(this.handleError('getTask', [])));
+      .pipe(catchError(this.handleError('getTask', []))); }
+
+    );
+
   }
+
+  updateTasksList(): Observable<Task[]> {
+    return this.subjectGetTasks.asObservable();
+  }
+
+  // getTasks(): Observable<Task[]> {
+  //   return this.http
+  //     .get<Task[]>(this.tasksUrl)
+  //     .pipe(catchError(this.handleError('getTask', [])));
+  // }
 
   addTask(task: Task): Observable<Task> {
     console.log(task);
+    this.subjectGetTasks.next();
     return this.http
       .post<Task>(this.tasksUrl, task, httpOptions)
       .pipe(catchError(this.handleError<Task>('postTask')));
