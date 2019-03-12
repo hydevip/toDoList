@@ -2,6 +2,7 @@
   <mat-card>
     <p style="text-align: center;">To Do Tasks</p>
     <mat-accordion>
+      <div *ngIf="!tasks.length">
       <mat-expansion-panel *ngFor='let task of tasks'>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -19,6 +20,7 @@
         {{task.description}}
 
       </mat-expansion-panel>
+    </div>
     </mat-accordion>
   </mat-card>
 
