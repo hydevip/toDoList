@@ -46,8 +46,6 @@ export class TaskService {
   // }
 
   addTask(task: Task): Observable<Task> {
-    console.log(task);
-
     return this.http
       .post<Task>(this.tasksUrl, task, httpOptions)
       .pipe(catchError(this.handleError<Task>('postTask')));
@@ -55,7 +53,6 @@ export class TaskService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
