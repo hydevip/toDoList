@@ -19,6 +19,8 @@ const httpOptions = {
 export class TaskService {
   api_url = 'http://localhost:8080';
   tasksUrl = '/api/tasks';
+
+
   private subjectGetTasks = new BehaviorSubject<any>(
     this.http
       .get<Task[]>(this.tasksUrl)
@@ -26,6 +28,13 @@ export class TaskService {
   );
 
   constructor(private http: HttpClient) {}
+
+
+
+  getTasksList(): Observable<any> {
+    return this.subjectGetTasks.asObservable();
+  }
+
 
   sendTasksList() {
     this.subjectGetTasks.next(
@@ -35,9 +44,7 @@ export class TaskService {
     );
   }
 
-  getTasksList(): Observable<any> {
-    return this.subjectGetTasks.asObservable();
-  }
+
 
   // getTasks(): Observable<Task[]> {
   //   return this.http

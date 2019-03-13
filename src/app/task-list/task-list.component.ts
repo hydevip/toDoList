@@ -10,17 +10,20 @@ import { Subscription } from 'rxjs';
 })
 export class TaskListComponent implements OnInit {
   subscription: Subscription;
+  subscription2: Subscription;
   task: Task;
   tasks: Task[];
 
-  constructor(private taskService: TaskService) {
-  }
+  constructor(private taskService: TaskService) {}
 
   ngOnInit() {
-
-    console.log(this.subscription = this.taskService.getTasksList().subscribe((data) => (this.tasks = data)));
+    console.log(
+      (this.subscription = this.taskService
+        .getTasksList()
+        .subscribe((data: Task[]) => (this.tasks = data)))
+    );
+    this.subscription2 = this.taskService
+      .getTasksList()
+      .subscribe((data: Task[]) => (this.tasks = data));
   }
-
-
-
 }
