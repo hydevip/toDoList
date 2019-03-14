@@ -24,6 +24,8 @@ import { TaskService } from '../../task.service';
 export class EditTaskComponent implements OnInit {
   form: FormGroup;
   selectedTask: Task;
+  updatedTask: Task;
+
 
   constructor(
     private fb: FormBuilder,
@@ -42,7 +44,13 @@ export class EditTaskComponent implements OnInit {
   ngOnInit() {}
 
   save() {
+this.updatedTask._id = this.selectedTask._id;
+this.updatedTask.title = this.form.value.title;
+this.updatedTask.description = this.form.value.description;
+this.updatedTask.priority = this.form.value.priority;
+
     this.dialogRef.close(this.form.value);
+    console.log(this.updatedTask);
   }
 
   close() {

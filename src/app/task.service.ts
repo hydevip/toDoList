@@ -46,6 +46,13 @@ export class TaskService {
       .pipe(catchError(this.handleError<Task>('postTask')));
   }
 
+  editTask(task: Task): Observable<Task> {
+    const newTaskUrl = this.tasksUrl + task._id;
+    return this.http
+      .put<Task>(newTaskUrl, task, httpOptions)
+      .pipe(catchError(this.handleError<Task>('getTask')));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
