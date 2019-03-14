@@ -17,9 +17,17 @@
         Description
       </mat-panel-description>
       {{task.description}}
-<mat-action-row>
-  <button><mat-icon>edit</mat-icon></button>
-</mat-action-row>
+      <div class="material-buttons">
+        <mat-action-row>
+          <button mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-action-row>
+      </div>
+
     </mat-expansion-panel>
 
   </mat-accordion>
