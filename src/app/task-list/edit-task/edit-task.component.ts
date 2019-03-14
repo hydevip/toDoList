@@ -44,6 +44,10 @@ export class EditTaskComponent implements OnInit {
   ngOnInit() {}
 
   save() {
+    console.log('selected task from edit task component imported from tasklist');
+    console.log(this.selectedTask);
+    console.log('updated task from edit task component');
+    console.log(this.updatedTask);
 this.updatedTask._id = this.selectedTask._id;
 this.updatedTask.title = this.form.value.title;
 this.updatedTask.description = this.form.value.description;
