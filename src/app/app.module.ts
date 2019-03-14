@@ -20,10 +20,11 @@ import {
   MatDividerModule,
   MatRadioModule
 } from '@angular/material';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, CreateTaskComponent],
+  declarations: [AppComponent, TaskListComponent, CreateTaskComponent, EditTaskComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
