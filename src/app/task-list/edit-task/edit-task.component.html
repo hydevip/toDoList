@@ -1,18 +1,29 @@
 <h2 mat-dialog-title>Edit Task</h2>
-<mat-dialog-content>
+<mat-dialog-content [formGroup]="form">
 
+  <div class="example-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput type="text" maxlength="60" minlength="4" placeholder="{{selectedTask.title}}" formControlName="title"
+        required>
+    </mat-form-field>
 
-</mat-dialog-content [formGroup]="form" ]>
+    <mat-radio-group formControlName="priority">
+      <mat-radio-button color="primary" value="High">High</mat-radio-button>
+      <mat-radio-button color="primary" value="Medium">Medium</mat-radio-button>
+      <mat-radio-button color="primary" value="Low">Low</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="5" formControlName="description" placeholder="{{selectedTask.description}}" required></textarea>
+    </mat-form-field>
+  </div>
 
-<mat-form-field>
-
-  <input matInput
-          placeholder="{{title}}"
-         formControlName="title">
+</mat-dialog-content>
 
 
 <mat-dialog-actions>
-  <button mat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-button cdkFocusInitial>Save</button>
-  <!--<button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Save</button>-->
+  <button class="mat-raised-button" (click)="close()">Close</button>
+
+  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
 </mat-dialog-actions>

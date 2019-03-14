@@ -11,6 +11,7 @@ import {
   FormGroup,
   FormControl,
   FormBuilder,
+  ReactiveFormsModule,
   Validators
 } from '@angular/forms';
 import { TaskService } from '../../task.service';
