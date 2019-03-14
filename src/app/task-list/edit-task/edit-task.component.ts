@@ -27,7 +27,7 @@ export class EditTaskComponent implements OnInit {
   updatedTask: Task;
 
 
-  constructor(
+  constructor(private taskService: TaskService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditTaskComponent>,
     @Inject(MAT_DIALOG_DATA) { _id, title, description, priority }: Task
@@ -50,7 +50,12 @@ this.updatedTask.description = this.form.value.description;
 this.updatedTask.priority = this.form.value.priority;
 
     this.dialogRef.close(this.form.value);
+    console.log('updated task:');
     console.log(this.updatedTask);
+
+
+    this.taskService.addTask(this.updatedTask).subscribe();
+    return this.taskService.sendTasksList();
   }
 
   close() {
