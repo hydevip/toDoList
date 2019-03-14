@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../interfaces';
 import { TaskService } from '../task.service';
 import { Subscription } from 'rxjs';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 @Component({
   selector: 'app-task-list',
@@ -13,8 +15,10 @@ export class TaskListComponent implements OnInit {
   subscription2: Subscription;
   task: Task;
   tasks: Task[];
+  selectedTask: Task;
+  editedTask: Task;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private dialog: MatDialog) {}
 
   ngOnInit() {
 
@@ -24,4 +28,25 @@ export class TaskListComponent implements OnInit {
         console.log(this.tasks);
 
   }
+
+
+  onEditClicked(task: Task): void {
+    this.selectedTask = task;
+    const dialogRef = this.dialog.open(EditTaskComponent, {
+      width: '350px',
+      data: {
+        _id: this.selectedTask._id,
+        title: this.selectedTask.title,
+        descriprion: this.selectedTask.description,
+        priority: this.selectedTask.priority}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.editedTask = result;
+    });
+  }
+
 }
+
+

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TaskService } from '../task.service';
-import { Task } from '../interfaces';
+import { TaskService } from '../../task.service';
+import { Task } from '../../interfaces';
 
 @Component({
   selector: 'app-create-task',

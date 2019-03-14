@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskListComponent } from './task-list/task-list.component';
-import { CreateTaskComponent } from './create-task/create-task.component';
+import { CreateTaskComponent } from './task-list/create-task/create-task.component';
+import { EditTaskComponent } from './task-list/edit-task/edit-task.component';
 
 import {
   MatCardModule,
@@ -18,9 +19,10 @@ import {
   MatInputModule,
   MatButtonModule,
   MatDividerModule,
-  MatRadioModule
+  MatRadioModule,
+  MatDialogModule
 } from '@angular/material';
-import { EditTaskComponent } from './edit-task/edit-task.component';
+
 
 
 @NgModule({
@@ -39,9 +41,11 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
     MatDividerModule,
     MatInputModule,
     MatButtonModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [],
+  entryComponents: [EditTaskComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
