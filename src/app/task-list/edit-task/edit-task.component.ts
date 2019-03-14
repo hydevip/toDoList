@@ -25,7 +25,7 @@ import { Task2 } from 'src/app/interfaces.1';
 export class EditTaskComponent implements OnInit {
   form: FormGroup;
   selectedTask: Task;
-  updatedTask: Task= { _id:'', title:'', description:'', priority:'' };
+  updatedTask: Task = { _id: '', title: '', description: '', priority: '' };
   sample: Task2 = new Task2();
 
 
@@ -43,7 +43,7 @@ export class EditTaskComponent implements OnInit {
       description: [description, Validators.required],
       priority: [priority, Validators.required]
     });
-    //this.updatedTask =new Task();
+    // this.updatedTask =new Task();
   }
 
   ngOnInit() {}

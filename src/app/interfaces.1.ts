@@ -3,7 +3,7 @@ _id?: string;
 title: string;
 
 
-constructor (){
+constructor () {
   this._id = '';
   this.title = '';
 }
