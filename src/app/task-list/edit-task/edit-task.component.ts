@@ -24,7 +24,8 @@ import { TaskService } from '../../task.service';
 export class EditTaskComponent implements OnInit {
   form: FormGroup;
   selectedTask: Task;
-  updatedTask: Task;
+  updatedTask: Task= { _id:'', title:'', description:'', priority:'' };
+
 
 
   constructor(private taskService: TaskService,
@@ -39,11 +40,13 @@ export class EditTaskComponent implements OnInit {
       description: [description, Validators.required],
       priority: [priority, Validators.required]
     });
+    //this.updatedTask =new Task();
   }
 
   ngOnInit() {}
 
   save() {
+
     console.log('selected task from edit task component imported from tasklist');
     console.log(this.selectedTask);
     console.log('updated task from edit task component');
