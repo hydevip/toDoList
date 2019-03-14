@@ -22,11 +22,12 @@ import {
   MatRadioModule,
   MatDialogModule
 } from '@angular/material';
+import { TestComponent } from './test/test.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, TaskListComponent, CreateTaskComponent, EditTaskComponent],
+  declarations: [AppComponent, TaskListComponent, CreateTaskComponent, EditTaskComponent, TestComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

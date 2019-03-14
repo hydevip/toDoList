@@ -15,6 +15,7 @@ import {
   Validators
 } from '@angular/forms';
 import { TaskService } from '../../task.service';
+import { Task2 } from 'src/app/interfaces.1';
 
 @Component({
   selector: 'app-edit-task',
@@ -25,6 +26,8 @@ export class EditTaskComponent implements OnInit {
   form: FormGroup;
   selectedTask: Task;
   updatedTask: Task= { _id:'', title:'', description:'', priority:'' };
+  sample: Task2 = new Task2();
+
 
 
 
