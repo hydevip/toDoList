@@ -33,11 +33,11 @@ export class TaskListComponent implements OnInit {
   onEditClicked(task: Task): void {
     this.selectedTask = task;
     const dialogRef = this.dialog.open(EditTaskComponent, {
-      width: '350px',
+      width: '500px',
       data: {
         _id: this.selectedTask._id,
         title: this.selectedTask.title,
-        descriprion: this.selectedTask.description,
+        description: this.selectedTask.description,
         priority: this.selectedTask.priority}
     });
 
