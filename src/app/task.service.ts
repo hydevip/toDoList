@@ -48,9 +48,11 @@ export class TaskService {
 
   editTask(task: Task): Observable<Task> {
     const newTaskUrl = this.tasksUrl + '/' + task._id;
+    console.log('put task final link');
+    console.log(newTaskUrl);
     return this.http
       .put<Task>(newTaskUrl, task, httpOptions)
-      .pipe(catchError(this.handleError<Task>('getTask')));
+      .pipe(catchError(this.handleError<Task>('putTask')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
