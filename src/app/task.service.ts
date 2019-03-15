@@ -47,7 +47,7 @@ export class TaskService {
   }
 
   editTask(task: Task): Observable<Task> {
-    const newTaskUrl = this.tasksUrl + task._id;
+    const newTaskUrl = this.tasksUrl + '/' + task._id;
     return this.http
       .put<Task>(newTaskUrl, task, httpOptions)
       .pipe(catchError(this.handleError<Task>('getTask')));
