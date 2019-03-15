@@ -52,7 +52,7 @@ export class TaskService {
     console.log(newTaskUrl);
     return this.http
       .put(newTaskUrl, task, httpOptions)
-      .pipe(catchError(this.handleError<Task>('putTask')));
+      .pipe(catchError(this.handleError<any>('putTask')));
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
