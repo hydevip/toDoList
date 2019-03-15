@@ -50,6 +50,11 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+
+  onDeleteClicked(task: Task) {
+    this.taskService.deleteTask(task).subscribe();
+    return this.taskService.sendTasksList();
+  }
 }
 
 

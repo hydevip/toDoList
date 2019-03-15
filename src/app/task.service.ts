@@ -55,6 +55,18 @@ export class TaskService {
       .pipe(catchError(this.handleError<any>('putTask')));
   }
 
+
+  deleteTask(task: Task): Observable<any> {
+    const newTaskUrl = this.tasksUrl + '/' + task._id;
+    console.log('delete task final link');
+    console.log(newTaskUrl);
+    return this.http
+    .put(newTaskUrl, task, httpOptions)
+    .pipe(catchError(this.handleError<any>('deleteTask')));
+  }
+
+
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
@@ -63,4 +75,7 @@ export class TaskService {
       return of(result as T);
     };
   }
+
+
+
 }
