@@ -61,7 +61,7 @@ export class TaskService {
     console.log('delete task final link');
     console.log(newTaskUrl);
     return this.http
-    .put(newTaskUrl, task, httpOptions)
+    .delete(newTaskUrl, httpOptions)
     .pipe(catchError(this.handleError<any>('deleteTask')));
   }
 
