@@ -46,12 +46,12 @@ export class TaskService {
       .pipe(catchError(this.handleError<Task>('postTask')));
   }
 
-  editTask(task: Task): Observable<Task> {
+  editTask(task: Task): Observable<any> {
     const newTaskUrl = this.tasksUrl + '/' + task._id;
     console.log('put task final link');
     console.log(newTaskUrl);
     return this.http
-      .put<Task>(newTaskUrl, task, httpOptions)
+      .put(newTaskUrl, task, httpOptions)
       .pipe(catchError(this.handleError<Task>('putTask')));
   }
 
