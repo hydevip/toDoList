@@ -89,13 +89,12 @@ app.get("/api/tasks/:id", function(req, res) {
   });
 });
 
+
 app.put("/api/tasks/:id", function(req, res) {
   var updateDoc = req.body;
-  var _id=new ObjectID(updateDoc.id);
   delete updateDoc._id;
 
-
-  db.collection(TASKS_COLLECTION).updateOne({ _id : _id }, updateDoc, function(err, doc) {
+  db.collection(TASKS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to update task");
     } else {
