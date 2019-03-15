@@ -95,7 +95,7 @@ app.put("/api/tasks/:id", function(req, res) {
   delete updateDoc._id;
 
 
-  db.collection(TASKS_COLLECTION).updateOne({ _id: _id}, updateDoc, function(err, doc) {
+  db.collection(TASKS_COLLECTION).updateOne({ _id }, updateDoc, function(err, doc) {
     if (err) {
       handleError(res, err.message, "Failed to update task");
     } else {
