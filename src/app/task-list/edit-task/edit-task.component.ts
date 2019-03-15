@@ -64,7 +64,7 @@ this.updatedTask.priority = this.form.value.priority;
     console.log(this.updatedTask);
 
 
-    this.taskService.addTask(this.updatedTask).subscribe();
+    this.taskService.editTask(this.updatedTask).subscribe();
     return this.taskService.sendTasksList();
   }
 
