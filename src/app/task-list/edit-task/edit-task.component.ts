@@ -60,11 +60,9 @@ this.updatedTask.description = this.form.value.description;
 this.updatedTask.priority = this.form.value.priority;
 
     this.dialogRef.close(this.form.value);
+    this.taskService.editTask(this.updatedTask).subscribe(data => console.log(data));
     console.log('updated task:');
     console.log(this.updatedTask);
-
-
-    this.taskService.editTask(this.updatedTask).subscribe(data => console.log(data));
     return this.taskService.sendTasksList();
   }
 
