@@ -1,3 +1,14 @@
+MEAN Fullstack project based on Mongo db (hosted at mLab.com ),
+Express on back end (RESTful API and DB operations), Angular 7
+used on front end ( HttpClient, RxJs, Observable, Subscription,
+BehaviorSubject ), and Node Js as environment . Project is deployed
+on cloud application platform Heroku.com for CI/CD trough Git
+pipeline.
+https://rocky-brook-95772.herokuapp.com/
+
+![image](https://user-images.githubusercontent.com/35841222/55711910-00adf600-59ee-11e9-822a-3cb5c5454b77.png)
+
+
 # ToDoList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
